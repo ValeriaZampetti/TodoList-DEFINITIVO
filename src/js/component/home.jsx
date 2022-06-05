@@ -1,26 +1,35 @@
 import React from "react";
+import { Task } from "./ Task";
+import Proptypes from "prop-types";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+export const Box = () => {
+	const [newTask, setNewTask] = useState("");
+	const [listOfTasks, setListOfTasks]= useState([
+		"Make the Bed",
+		"Wash my Hands",
+		"Eat",
+		"Walk the dog",
+	]);
 
-//create your first component
-const Home = () => {
-	return (
-		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+return (
+	<div className= "container w-100 d-flex flex-column">
+		<InputRow
+			text= "what needs to be done"
+			value={newTask}
+			setter= {setNewTask}
+			setterList={setListOfTasks}
+		/>
+		{listOfTasks.length === 0 ? (
+			<p> {'No tasks, add a task'}</p>
+		) : (
+			<List list={listOfTasks} setterList= {setListOfTasks} />
+		)}
+		<Counter list={listOfTasks} />
 		</div>
 	);
 };
 
-export default Home;
+			
+
+
