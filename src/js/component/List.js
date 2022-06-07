@@ -3,24 +3,24 @@ import { Task } from "./Task";
 import PropTypes from "prop-types";
 
 export const List = (props) => {
-    return (
-        <div>
-            {props.list.map((task, index) => {
-                return (
-                    <task 
-                        task= {task}
-                        key= {index}
-                        setterlist= {props.setterList}
-                        list={props.list}
-                    />
-                );
-            })}
-        </div>
-    );
+	return (
+		<div>
+			{props.list.map((task, index) => {
+				return (
+					<Task
+						task={task}
+						key={index}
+						id={index}
+						setterlist={props.setterList}
+						list={props.list}
+					/>
+				);
+			})}
+		</div>
+	);
 };
 
-List.PropTypes = {
-    setterList: PropTypes.func,
-    list: PropTypes.string,
+List.propTypes = {
+	setterList: PropTypes.func,
+	list: PropTypes.array,
 };
-
